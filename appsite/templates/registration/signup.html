@@ -1,0 +1,55 @@
+{% extends 'appsite/base.html' %}
+
+{% block content %}
+
+<div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
+<h2 class="text-2xl font-bold mb-6 text-center">Criar Conta</h2>
+    
+<form method="post" enctype="multipart/form-data" class="space-y-6">
+{% csrf_token %}
+        
+<div class="space-y-4">
+    <div>
+<label class="block text-gray-700 font-medium mb-2" for="{{ form.username.id_for_label }}">
+Nome de usuário
+</label>
+{{ form.username }}
+{% if form.username.errors %}
+<p class="text-red-500 text-sm mt-1">{{ form.username.errors.0 }}</p>
+{% endif %}
+</div>
+
+<div>
+<label class="block text-gray-700 font-medium mb-2" for="{{ form.email.id_for_label }}">
+E-mail
+</label>
+{{ form.email }}
+{% if form.email.errors %}
+<p class="text-red-500 text-sm mt-1">{{ form.email.errors.0 }}</p>
+{% endif %}
+</div>
+
+<div>
+<label class="block text-gray-700 font-medium mb-2" for="{{ form.password1.id_for_label }}">
+Senha
+</label>
+{{ form.password1 }}
+{% if form.password1.errors %}
+<p class="text-red-500 text-sm mt-1">{{ form.password1.errors.0 }}</p>
+{% endif %}
+<p class="text-gray-600 text-sm mt-1">Mínimo 8 caracteres</p>
+</div>
+
+<div>
+<label class="block text-gray-700 font-medium mb-2" for="{{ form.password2.id_for_label }}">
+Confirmar senha
+</label>
+{{ form.password2 }}
+{% if form.password2.errors %}
+<p class="text-red-500 text-sm mt-1">{{ form.password2.errors.0 }}</p>
+{% endif %}
+</div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'appsite/base.html' %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
+    <h2 class="text-2xl font-bold mb-6">Editar Perfil</h2>
+    
+    <form method="post" enctype="multipart/form-data" class="space-y-4">
+        {% csrf_token %}
+        
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2">Sobre mim</label>
+            {{ form.bio }}
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2">Telefone</label>
+            {{ form.telefone }}
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2">Cidade</label>
+            {{ form.cidade }}
+        </div>
+
+        <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600">
+            Salvar Alterações
+        </button>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,14 +1,31 @@
 {% extends 'appsite/base.html' %}
 
 {% block content %}
-    <div class="post">
-        {% if post.published_date %}
-            <div class="date">
-                {{ post.published_date }}
-            </div>
-        {% endif %}
-        <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-        <h2>{{ post.title }}</h2>
-        <p>{{ post.text|linebreaksbr }}</p>
+<div class="post-detail">
+    <div class="post-header">
+        <h2>{{ post.titulo }}</h2>
+        <div class="post-meta">
+            <span>{{ post.data_publicacao }}</span>
+            <span>Por: {{ post.autor }}</span>
+        </div>
     </div>
-    {% endblock %}
+
+    {% if post.imagem %}
+    <div class="post-image">
+        <img src="{{ post.imagem.url }}" alt="{{ post.titulo }}">
+    </div>
+    {% endif %}
+
+    <div class="post-content">
+        <p>{{ post.texto|linebreaksbr }}</p>
+        <p class="contact-info">Contato: {{ post.contato }}</p>
+    </div>
+
+    {% if user == post.autor %}
+    <div class="post-actions">
+        <a href="{% url 'post_edit' pk=post.pk %}" class="btn btn-primary">Editar</a>
+        <a href="{% url 'post_delete' pk=post.pk %}" class="btn btn-danger">Excluir</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

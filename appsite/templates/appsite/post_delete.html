@@ -1,0 +1,17 @@
+{% extends 'appsite/base.html' %}
+
+{% block title %}Excluir postagem{% endblock %}
+{% block content %}
+<div class="delete-confirmation">
+    <h2>Confirmar exclusão</h2>
+    <p>Você tem certeza que deseja excluir a postagem "{{ post.titulo }}"?</p>
+    
+    <form method="post">
+        {% csrf_token %}
+        <div class="button-group">
+            <button type="submit" class="btn btn-danger">Confirmar exclusão</button>
+            <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
