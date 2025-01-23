@@ -21,5 +21,5 @@ class Post(models.Model):
 class Perfil(models.Model):
     usuario = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     bio = models.TextField('Sobre mim', max_length=500, blank=True)
-    telefone = models.CharField('Telefone', max_length=20, blank=True)
+    telefone = models.CharField('Telefone', max_length=13, blank=True)
     cidade = models.CharField('Cidade', max_length=100, blank=True)
